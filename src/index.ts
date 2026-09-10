@@ -16,7 +16,7 @@ app.use(cors());
 app.use(clientCache(1));
 
 app.get("/", (req, res) => {
-  const routes: IRouteData[] = [
+  const routes = [
     {
       method: "GET",
       path: "/otakudesu",
@@ -34,6 +34,31 @@ app.get("/", (req, res) => {
     {
       method: "GET",
       path: "/oploverz",
+      description: "Oploverz",
+      pathParams: [],
+      queryParams: [],
+    },
+  ];
+
+  res.json(
+    setPayload(res, {
+      data: { routes },
+    }),
+  );
+});
+
+app.use("/otakudesu", otakudesuRouter);
+app.use("/kuramanime", kuramanimeRouter);
+app.use("/samehadaku", samehadakuRouter);
+app.use("/oploverz", oploverzRouter);
+
+app.use(errorHandler);
+
+const SERVER_PORT = Number(process.env.PORT || PORT);
+
+app.listen(SERVER_PORT, '0.0.0.0', () => {
+  console.log(`server is running on http://0.0.0.0:${SERVER_PORT}`);
+});
       description: "Oploverz",
       pathParams: [],
       queryParams: [],
