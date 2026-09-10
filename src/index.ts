@@ -59,26 +59,3 @@ const SERVER_PORT = Number(process.env.PORT || PORT);
 app.listen(SERVER_PORT, '0.0.0.0', () => {
   console.log(`server is running on http://0.0.0.0:${SERVER_PORT}`);
 });
-      description: "Oploverz",
-      pathParams: [],
-      queryParams: [],
-    },
-  ];
-
-  res.json(
-    setPayload(res, {
-      data: { routes },
-    }),
-  );
-});
-
-app.use("/otakudesu", otakudesuRouter);
-app.use("/kuramanime", kuramanimeRouter);
-app.use("/samehadaku", samehadakuRouter);
-app.use("/oploverz", oploverzRouter);
-
-app.use(errorHandler);
-
-app.listen(PORT, () => {
-  console.log(`server is running on http://localhost:${PORT}`);
-});
