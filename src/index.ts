@@ -108,3 +108,10 @@ app.listen(SERVER_PORT, '0.0.0.0', () => {
   console.log(`server is running on http://0.0.0.0:${SERVER_PORT}`);
 });
 
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+
